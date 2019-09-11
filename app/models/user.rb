@@ -12,6 +12,20 @@ class User < ApplicationRecord
   has_secure_password
   
   private
+
+  def digest(string)
+    cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST : BCrypt::Engine.cost
+    BCrypt::Password.create(string, cost: cost)
+  end
+
+  def create_token
+    SecureRandom.urlsafe_base64
+  end
+
+  def remember
+    self.remember_token=User.create_token
+    update_attribute(:remember_digest, User.digest(remember_token))
+  end
   
   def email_downcase
     email.downcase!
