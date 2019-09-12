@@ -1,7 +1,8 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   helper_method :current_user 
-    def log_in(user)
+  
+  def log_in(user)
     session[:user_id]=user.id
     new_token=User.create_token
     cookies.permanent[:remember_token]=new_token
@@ -19,5 +20,13 @@ class ApplicationController < ActionController::Base
         @current_user ||= user
       end
     end
+  end
+
+  def log_out(user)
+      session.delete(:user_id)
+      user.update_attribute(:remember_digest, nil)
+      @current_user = nil
+      cookies.delete(:remember_token)
+      cookies.delete(:user_id)
   end
 end
