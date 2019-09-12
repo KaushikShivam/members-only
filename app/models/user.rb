@@ -20,6 +20,10 @@ class User < ApplicationRecord
     SecureRandom.urlsafe_base64
   end
 
+  def authenticated?(remember_token)
+    BCrypt::Password.new(remember_digest).is_password?(remember_token)
+  end
+  
   private
   
   def email_downcase
