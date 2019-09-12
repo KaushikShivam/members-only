@@ -11,12 +11,12 @@ class User < ApplicationRecord
   
   has_secure_password
   
-  def digest(string)
+  def self.digest(string)
     cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST : BCrypt::Engine.cost
     BCrypt::Password.create(string, cost: cost)
   end
 
-  def create_token
+  def self.create_token
     SecureRandom.urlsafe_base64
   end
 
@@ -27,8 +27,8 @@ class User < ApplicationRecord
   end
   
   def remember
-    self.remember_token = create_token
-    self.remember_digest = digest(remember_token)
+    self.remember_token = User.create_token
+    self.remember_digest = User.digest(remember_token)
   end
   
 end
