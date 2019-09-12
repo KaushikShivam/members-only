@@ -9,6 +9,11 @@
   </head>
 
   <body>
+  <% if flash[:error] %>
+  <h2 class="bg-danger text-center"><%= flash[:error] %></h2>
+<% elsif flash[:success] %>
+  <h2 class="bg-success"><%= flash[:success] %></h2>
+<% end %>
     <%= yield %>
   </body>
 </html>
