@@ -1,0 +1,13 @@
+<%= @users.each do |user| %>
+  <div class="jumbotron custom-bg">
+  <div class="media">
+  <div class="media-left">
+    <img src="https://picsum.photos/200" alt="Random user">
+  </div>
+  <div class="media-body">
+    <h1><%= user.name %></h1>
+    <h3><%= user.email %></h3>
+  </div>
+</div>
+</div>
+<% end %>

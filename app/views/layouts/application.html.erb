@@ -23,6 +23,7 @@
       <% else %>
         <li><%= link_to 'Create post', new_post_path %></li>
         <li><%= link_to 'View Profile', user_path(current_user) %></li>
+        <li><%= link_to 'View Users', users_path %></li>
         <li><%= link_to 'Log Out', '/logout', method: :delete %> </li>
       <% end %>
     </ul>

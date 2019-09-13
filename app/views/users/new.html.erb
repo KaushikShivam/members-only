@@ -1,6 +1,6 @@
 <% if !@user.errors.full_messages.empty? %>
   <% @user.errors.full_messages.each do |message| %>
-    <p class="bg-danger text-center"><%= message %></p>
+		<%= content_tag(:div, message, class: ["alert", "alert-danger"]) %>
   <% end %>
 <% end %>
 
