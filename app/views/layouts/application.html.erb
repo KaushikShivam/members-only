@@ -26,12 +26,16 @@
     </ul>
   </div>
 </nav>
-  
+   
+   
+<main class="container">
   <% if flash[:error] %>
-  <h2 class="bg-danger text-center"><%= flash[:error] %></h2>
+  <%= content_tag(:div, flash[:error], class: ["alert", "alert-danger"]) %>
 <% elsif flash[:success] %>
-  <h2 class="bg-success"><%= flash[:success] %></h2>
+<%= content_tag(:div, flash[:success], class: ["alert", "alert-success"]) %>
 <% end %>
-    <%= yield %>
+    <%= yield %>  
+</main>  
+
   </body>
 </html>
