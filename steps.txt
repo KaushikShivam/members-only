@@ -18,12 +18,12 @@ Session
 User logs in
     find user using email
     check if user exists,
-            compare user's password using authenticate
-                create a remember token    
-        save it to Session hash
-            save remember_digest to DB
-        set the user to the current_user
-
+        if true =>compare user's password using authenticate
+                  create a remember token    
+                save it to Session hash
+                save remember_digest to DB
+                set the user to the current_user
+        render 'new'
 
 later -> Associate them with posts
 1. User -> has_many

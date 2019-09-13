@@ -11,19 +11,20 @@ class UserLoginTest < ActionDispatch::IntegrationTest
     @user = users(:michael)
   end
 
-  # test "Log in with valid credentials" do
-  #   get login_path
-  #   assert_template 'sessions/new'
-  #   post login_path, params: { sessions: { email: @user.email, password: "password"}}
-  #   assert_redirected_to @user
-  #   assert_not flash.empty?
-  # end
+  test 'Log in with valid credentials' do
+    get login_path
+    assert_template 'sessions/new'
+    post login_path, params: { session: { email: @user.email, password: 'password' } }
 
-  # test "Log in with wrong credentials" do
-  #   get login_path
-  #   assert_template 'sessions/new'
-  #   post login_path, params: { sessions: { email: @user.email, password: "pd"}}
-  #   assert_not flash.empty?
-  #   assert_template 'sessions/new'
-  # end
+    assert_redirected_to @user
+    assert flash.empty?
+  end
+
+  test 'Log in with wrong credentials' do
+    get login_path
+    assert_template 'sessions/new'
+    post login_path, params: { session: { email: @user.email, password: 'pd' } }
+    assert_not flash.empty?
+    assert_template 'sessions/new'
+  end
 end

@@ -3,18 +3,26 @@
 require 'test_helper'
 
 class PostsControllerTest < ActionDispatch::IntegrationTest
-  test 'should get new' do
-    get posts_new_url
+  def setup
+    @user = users(:michael)
+  end
+  test 'should get new post page' do
+    get new_post_path
+    follow_redirect!
+    assert_template 'sessions/new'
+    get login_path
+    post login_path, params: { session: { email: @user.email, password: 'password' } }
+    get new_post_path
     assert_response :success
   end
 
   test 'should get create' do
-    get posts_create_url
+    get posts_path
     assert_response :success
   end
 
   test 'should get index' do
-    get posts_index_url
+    get posts_path
     assert_response :success
   end
 end
