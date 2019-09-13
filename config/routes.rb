@@ -1,10 +1,10 @@
 Rails.application.routes.draw do  
   get 'posts/new'
 
-  get 'posts/create'
+  post 'posts/create'
 
-  get 'posts/index'
-
+  get 'posts', to: 'posts#index'
+  
   get '/login', to: 'sessions#new'
 
   post '/login', to: 'sessions#create'

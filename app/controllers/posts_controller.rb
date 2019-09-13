@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :restrict? , only: [:new, :create]
+  before_action :restrict?, only: [:new, :create]
   
   def new
     @post = @current_user.posts.new
@@ -9,6 +9,7 @@ class PostsController < ApplicationController
   end
 
   def index
+    @posts = Post.all
   end
   
   private
