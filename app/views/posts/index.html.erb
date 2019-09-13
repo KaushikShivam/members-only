@@ -1,5 +1,19 @@
-<% @posts.each do |post| %>
-  <h2><%= post.title %></h2>
-  <p><%= post.body %></p>
-  <p>Author - <%= current_user ? post.user : "*************" %></p>
-<% end %>
+  <% @posts.each do |post| %>
+    <div class="jumbotron">
+      <h2><%= post.title %></h2>
+      <p><%= post.body %></p>
+      <% if current_user %>
+        <h4>Author - <%= post.user.name %></h4>
+      <% else %>
+        <h4>
+          Author - 
+          <span class="glyphicon glyphicon-asterisk" aria-hidden="true"></span>
+          <span class="glyphicon glyphicon-asterisk" aria-hidden="true"></span>
+          <span class="glyphicon glyphicon-asterisk" aria-hidden="true"></span>
+          <span class="glyphicon glyphicon-asterisk" aria-hidden="true"></span>
+          <span class="glyphicon glyphicon-asterisk" aria-hidden="true"></span>
+          <span class="glyphicon glyphicon-asterisk" aria-hidden="true"></span>
+        </h4>
+      <% end %>      
+    </div>
+  <% end %>

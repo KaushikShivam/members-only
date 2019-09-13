@@ -1,2 +1,19 @@
 @import "bootstrap-sprockets";
-@import "bootstrap"; 
+@import "bootstrap";
+
+body {
+  font-family: 'Open Sans', sans-serif;
+}
+
+.custom-bg {
+  background-color: rgb(21, 74, 104);
+
+  &>* {
+    color: white;
+  }
+
+  & h3,
+  & h1 {
+    margin-left: 2rem;
+  }
+}
