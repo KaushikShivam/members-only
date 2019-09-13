@@ -1,4 +1,9 @@
 Rails.application.routes.draw do  
+  get 'posts/new'
+
+  get 'posts/create'
+
+  get 'posts/index'
 
   get '/login', to: 'sessions#new'
 
