@@ -9,6 +9,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       flash[:success] = "You've successfully signed up"
+      log_in @user
       redirect_to user_path(@user)
     else
       flash.now[:error] = 'Sign up failed'
