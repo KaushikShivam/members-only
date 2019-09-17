@@ -1,0 +1,29 @@
+User
+1. Creating a User resource
+2. User -> name, email, password_digest, (member??)
+password, password_confirmation (has_secure_passwords)
+3. validations
+4. TESTS
+
+
+Session
+1. Create Session controller
+2. Update routes and actions
+3. Add remember token :
+    1. create a token method
+    2. encrypt token and save it to User
+
+
+
+User logs in
+    find user using email
+    check if user exists,
+        if true =>compare user's password using authenticate
+                  create a remember token    
+                save it to Session hash
+                save remember_digest to DB
+                set the user to the current_user
+        render 'new'
+
+later -> Associate them with posts
+1. User -> has_many
